@@ -1,0 +1,26 @@
+div.dokuwiki table.blind {
+  border: 0;
+}
+
+div.dokuwiki table.blind td {
+  padding: 1px 1em 1px 0;
+}
+
+div.dokuwiki div.poll_bar {
+  border: 1px solid __dark__;
+  padding: 0;
+  height: 12px;
+  width: 200px;
+}
+
+div.dokuwiki div.poll_full {
+  background-color: __light__;
+  font-size: 10px;
+  height: 12px;
+  border-right: 1px solid __dark__;
+}
+
+div.dokuwiki fieldset.poll {
+  width: 90%;
+  margin-bottom: 1.5em;
+}

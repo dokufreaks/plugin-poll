@@ -20,14 +20,7 @@ class syntax_plugin_poll extends DokuWiki_Syntax_Plugin {
    * return some info
    */
   function getInfo(){
-    return array(
-      'author' => 'Esther Brunner',
-      'email'  => 'wikidesign@gmail.com',
-      'date'   => '2006-08-19',
-      'name'   => 'Poll Plugin',
-      'desc'   => 'allows to create simple polls',
-      'url'    => 'http://wiki.splitbrain.org/plugin:poll',
-    );
+    return confToHash(dirname(__FILE__).'/INFO');
   }
 
   function getType(){ return 'substition';}

@@ -37,7 +37,7 @@ class syntax_plugin_poll extends DokuWiki_Syntax_Plugin {
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, &$handler) {
+    function handle($match, $state, $pos, Doku_Handler $handler) {
         $match = substr($match, 6, -7);  // strip markup
         list($title, $options) = preg_split('/>/u', $match, 2);
         if (!$options) {
@@ -57,7 +57,7 @@ class syntax_plugin_poll extends DokuWiki_Syntax_Plugin {
     /**
      * Create output
      */
-    function render($mode, &$renderer, $data) {
+    function render($mode, Doku_Renderer $renderer, $data) {
 
         if ($mode == 'xhtml') {
             global $ID;

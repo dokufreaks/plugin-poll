@@ -16,13 +16,6 @@ require_once(DOKU_PLUGIN.'syntax.php');
  */
 class syntax_plugin_poll extends DokuWiki_Syntax_Plugin {
 
-    /**
-     * return some info
-     */
-    function getInfo() {
-        return confToHash(dirname(__FILE__).'/INFO');
-    }
-
     function getType() { return 'substition';}
     function getPType() { return 'block';}
     function getSort() { return 167; }

@@ -75,11 +75,16 @@ class syntax_plugin_poll extends DokuWiki_Syntax_Plugin {
 
             // check if user has voted already
             $ip = clientIP(true);
-            if (isset($poll['ips']) && in_array($ip, $poll['ips'])) {
+			$userid = $_SERVER['REMOTE_USER'];
+			
+			if (isset($userid) && isset($poll['usernames']) && in_array($userid, $poll['usernames'])) {
+				// display results
+                $renderer->doc .= $this->_pollResults($poll);
+			}
+            elseif (!isset($userid) && isset($poll['ips']) && in_array($ip, $poll['ips'])) {
 
                 // display results
                 $renderer->doc .= $this->_pollResults($poll);
-
             } elseif ($vote = $_REQUEST['vote']) {
 
                 // user has just voted -> update results
@@ -89,7 +94,14 @@ class syntax_plugin_poll extends DokuWiki_Syntax_Plugin {
                     if ($vote == $opt) {
                         $poll['results'][$opt] += 1;
                         $poll['votes'] += 1;
-                        $poll['ips'][] = $ip;
+						if(isset($userid))
+						{
+							$poll['usernames'][] = $userid;
+						}
+						else
+						{
+							$poll['ips'][] = $ip;
+						}
                     } elseif (!isset($poll['results'][$opt])) {
                         $poll['results'][$opt] = 0;
                     }
